@@ -132,7 +132,7 @@ function ProblemStatCircle({ label, solved, total, strokeColor }) {
 
 // Participant card
 function ParticipantCard({ p, idx }) {
-  const rankStr = p.globalRanking ? `#${p.globalRanking.toLocaleString()}` : "";
+  const rankStr = p.worldwideRank ? `#${p.worldwideRank.toLocaleString()}` : "";
   const totalUsersStr = TOTAL_USERS.toLocaleString();
 
   const isTop1 = idx === 0;
@@ -203,7 +203,7 @@ function ParticipantCard({ p, idx }) {
         <div className="text-sm text-gray-300 mt-2 flex flex-wrap justify-center sm:justify-start items-center gap-x-4 gap-y-1">
           <span className="text-white font-semibold flex items-center gap-1">
             <GlobeIcon className="w-4 h-4 text-purple-400" />
-            Rank: {rankStr} {p.globalRanking ? `/ ${totalUsersStr}` : ""}
+            Rank: {rankStr} {p.worldwideRank ? `/ ${totalUsersStr}` : ""}
           </span>
         </div>
       </div>
@@ -245,23 +245,26 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Use your deployed backend URL here:
+  const API_URL = "https://leetboard-kny4.onrender.com/api/participants";
+
   useEffect(() => {
     const fetchParticipants = async () => {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch("http://localhost:5000/api/participants");
+        const response = await fetch(API_URL);
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
         const sorted = [...data].sort(
-          (a, b) => (a.globalRanking || Infinity) - (b.globalRanking || Infinity)
+          (a, b) => (a.worldwideRank || Infinity) - (b.worldwideRank || Infinity)
         );
         setParticipants(sorted);
       } catch (err) {
         console.error("Failed to fetch participants:", err);
         setError(
-          "Failed to load leaderboard data. Please ensure the backend server is running and accessible at http://localhost:5000."
+          "Failed to load leaderboard data. Please check backend availability."
         );
       } finally {
         setLoading(false);
@@ -284,11 +287,6 @@ export default function App() {
         <div className="text-xl text-red-500 text-center p-6 border border-red-700 rounded-lg bg-gray-800 shadow-lg">
           <p className="mb-2 font-bold">Error Loading Data!</p>
           <p>{error}</p>
-          <p className="mt-4 text-sm text-gray-400">
-            Make sure your Node.js backend is running at{" "}
-            <code>http://localhost:5000</code> and check its console for scraping
-            errors.
-          </p>
         </div>
       </div>
     );
