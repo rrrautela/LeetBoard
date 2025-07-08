@@ -7,11 +7,18 @@ const TOTAL_MEDIUM_PROBLEMS = 1800;
 const TOTAL_HARD_PROBLEMS = 700;
 const TOTAL_ALL_PROBLEMS = TOTAL_EASY_PROBLEMS + TOTAL_MEDIUM_PROBLEMS + TOTAL_HARD_PROBLEMS;
 
-// Medal Icon
 const MedalIcon = ({ className = "" }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-    stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-    className={`lucide lucide-medal ${className}`}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={`lucide lucide-medal ${className}`}
+  >
     <path d="M12 18.3a3 3 0 1 0 0 5.4 3 3 0 1 0 0-5.4Z" />
     <path d="M10.8 1.7a2 2 0 0 0-2 2v3.9c0 .7.2 1.4.6 2l2.7 3.6c.3.4.8.7 1.3.7h.6c.5 0 1-.3 1.3-.7l2.7-3.6c.4-.6.6-1.3.6-2V3.7a2 2 0 0 0-2-2.1c-.9-.3-1.9-.3-2.8 0h-.2c-.9.3-1.9.3-2.8 0Z" />
     <path d="M11.2 2c.2-.6.9-1 1.6-1s1.4.4 1.6 1" />
