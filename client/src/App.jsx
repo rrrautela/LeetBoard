@@ -7,7 +7,6 @@ const TOTAL_MEDIUM_PROBLEMS = 1800;
 const TOTAL_HARD_PROBLEMS = 700;
 const TOTAL_ALL_PROBLEMS = TOTAL_EASY_PROBLEMS + TOTAL_MEDIUM_PROBLEMS + TOTAL_HARD_PROBLEMS;
 
-// SVG Icon Components (MedalIcon, UserIcon, GlobeIcon) ... [Use the same as you posted]
 
 function ProblemStatCircle({ label, solved, total, strokeColor }) {
   const radius = 28;
@@ -195,7 +194,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-950 px-4 py-6 font-inter">
       <h1 className="text-4xl sm:text-5xl font-extrabold text-yellow-400 text-center mb-8 pb-4 border-b-2 border-yellow-600">
-        <MedalIcon className="inline-block w-10 h-10 mr-3 text-yellow-500" />
         LeetBoard
       </h1>
       <div className="space-y-4 max-w-4xl mx-auto">
