@@ -40,6 +40,11 @@ app.get('/api/participants', async (req, res) => {
   res.json(results.filter(Boolean));
 });
 
+app.get('/', (req, res) => {
+  res.send('Backend is alive 🚀');
+});
+
+
 app.listen(PORT, () => {
   console.log(`✅ Server running at http://localhost:${PORT}`);
 });
